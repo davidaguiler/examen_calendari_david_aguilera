@@ -1,3 +1,4 @@
+import 'package:examen_calendari/editar_esdeveniment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: EditarEsdevenimentForm(),
     );
   }
 }
