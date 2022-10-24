@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: EditarEsdevenimentForm(),
+      home: MyHomePage(
+        title: "My home page",
+      ),
     );
   }
 }
@@ -102,7 +104,6 @@ class MyHomePage extends StatefulWidget {
         horaFinal: DateTime(2022, 11, 19, 19, 0),
         titol: "Hackaton",
         descripcio: "Reptes ODS 2022"),
-
   ];
 
   final String title;
@@ -118,14 +119,8 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: ListView(
-          children: <Widget>[
-            for (Esdeveniment lEsdeveniment in widget.esdeveniments)
-              EsdevenimentWidget(lEsdeveniment)
-          ],
-        ),
-      ),
+      body:
+          LlistatEsdevenimentsWidget(llistaEsdeveniments: widget.esdeveniments),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ScaffoldMessenger.of(context)
@@ -134,6 +129,25 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Afegir esdeveniment',
         child: const Icon(Icons.add),
       ),
+    );
+  }
+}
+
+class LlistatEsdevenimentsWidget extends StatelessWidget {
+  const LlistatEsdevenimentsWidget({
+    Key? key,
+    required this.llistaEsdeveniments,
+  }) : super(key: key);
+
+  final List<Esdeveniment> llistaEsdeveniments;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        for (Esdeveniment lEsdeveniment in llistaEsdeveniments)
+          EsdevenimentWidget(lEsdeveniment)
+      ],
     );
   }
 }
