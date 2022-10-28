@@ -52,6 +52,13 @@ class _EditarEsdevenimentFormState extends State<EditarEsdevenimentForm> {
           )
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.save),
+        onPressed: () {
+
+            Navigator.of(context).pop();
+          },
+      ),
     );
   }
 }

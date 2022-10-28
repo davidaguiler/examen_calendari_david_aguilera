@@ -1,4 +1,4 @@
-import 'package:examen_calendari/editar_esdeveniment.dart';
+import 'editar_esdeveniment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -16,8 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+    routes: {
+      '/editar': (context) => EditarEsdevenimentForm(),
+    },
       home: MyHomePage(
-        title: "My home page",
+        title: "Calendari de David Aguilera",
       ),
     );
   }
@@ -123,8 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
           LlistatEsdevenimentsWidget(llistaEsdeveniments: widget.esdeveniments),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text("No implementat.")));
+          Navigator.of(context).pushNamed("/editar");
         },
         tooltip: 'Afegir esdeveniment',
         child: const Icon(Icons.add),
@@ -164,7 +166,7 @@ class EsdevenimentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-          "${DateFormat("yyyy-MM-dd HH:mm").format(esdeveniment.horaInici)}: ${esdeveniment.titol}"),
+          "${DateFormat("yyyy-MM-dd HH:mm").format(esdeveniment.horaInici)}: ${esdeveniment.titol} \nDescripció: ${esdeveniment.descripcio}\n\n"),
     );
   }
 }
